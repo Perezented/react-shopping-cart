@@ -6,7 +6,9 @@ const Navigation = (props) => {
     return (
         <div className="navigation">
             <NavigationContext.Consumer>
-                ((item)=>{console.log(item)})
+                {(item) => {
+                    console.log(item);
+                }}
             </NavigationContext.Consumer>
             {/* <NavLink to="/">Products</NavLink>
 			<NavLink to="/cart">
