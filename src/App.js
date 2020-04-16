@@ -19,14 +19,8 @@ function App() {
 
     const addItem = () => {
         // add the given item to the cart
-        const setCart = () => [
-            ...cart,
-            {
-                value: products,
-                id: cart.length,
-            },
-        ];
     };
+
     return (
         <div className="App">
             <NavigationContext.Provider value={{ cart }}>

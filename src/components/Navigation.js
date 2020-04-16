@@ -8,12 +8,12 @@ const Navigation = () => {
             <NavigationContext.Consumer>
                 {(item) => {
                     return (
-                        <div>
+                        <>
                             <NavLink to="/">Products</NavLink>
                             <NavLink to="/cart">
                                 Cart <span>{item.cart.length}</span>
                             </NavLink>
-                        </div>
+                        </>
                     );
                 }}
             </NavigationContext.Consumer>

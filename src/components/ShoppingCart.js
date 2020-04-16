@@ -14,22 +14,22 @@ const ShoppingCart = (props) => {
     };
 
     return (
-        <div className="shopping-cart">
-            <ShoppingCartContext.Consumer>
-                {(shoppingItem) => {
-                    console.log(shoppingItem);
-                }}
-            </ShoppingCartContext.Consumer>
+        <ShoppingCartContext.Consumer>
+            {(item) => {
+                return (
+                    <div className="shopping-cart">
+                        {item.cart.map((item) => (
+                            <Item key={item.id} {...item} />
+                        ))}
 
-            {/* {props.cart.map((item) => (
-                <Item key={item.id} {...item} />
-            ))}
-
-            <div className="shopping-cart__checkout">
-                <p>Total: ${getCartTotal()}</p>
-                <button>Checkout</button>
-            </div> */}
-        </div>
+                        <div className="shopping-cart__checkout">
+                            <p>Total: ${getCartTotal()}</p>
+                            <button>Checkout</button>
+                        </div>
+                    </div>
+                );
+            }}
+        </ShoppingCartContext.Consumer>
     );
 };
 
