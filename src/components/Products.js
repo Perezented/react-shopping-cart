@@ -4,22 +4,20 @@ import { ProductsContext } from '../contexts';
 // Components
 import Product from './Product';
 
-const Products = (props) => {
+const Products = () => {
     return (
         <div className="products-container">
             <ProductsContext.Consumer>
                 {(item) => {
-                    return console.log(item);
+                    return item.products.map((product) => (
+                        <Product
+                            key={product.id}
+                            product={product}
+                            addItem={item.addItem}
+                        />
+                    ));
                 }}
             </ProductsContext.Consumer>
-
-            {/* {props.products.map((product) => (
-                <Product
-                    key={product.id}
-                    product={product}
-                    addItem={props.addItem}
-                />
-            ))} */}
         </div>
     );
 };
