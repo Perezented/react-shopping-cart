@@ -2,26 +2,35 @@ import React from 'react';
 
 // Components
 import Item from './ShoppingCartItem';
+import { ShoppingCartContext } from '../contexts';
 
-const ShoppingCart = props => {
-	const getCartTotal = () => {
-		return props.cart.reduce((acc, value) => {
-			return acc + value.price;
-		}, 0).toFixed(2);
-	};
+const ShoppingCart = (props) => {
+    const getCartTotal = () => {
+        return props.cart
+            .reduce((acc, value) => {
+                return acc + value.price;
+            }, 0)
+            .toFixed(2);
+    };
 
-	return (
-		<div className="shopping-cart">
-			{props.cart.map(item => (
-				<Item key={item.id} {...item} />
-			))}
+    return (
+        <div className="shopping-cart">
+            <ShoppingCartContext.Consumer>
+                {(shoppingItem) => {
+                    console.log(shoppingItem);
+                }}
+            </ShoppingCartContext.Consumer>
 
-			<div className="shopping-cart__checkout">
-				<p>Total: ${getCartTotal()}</p>
-				<button>Checkout</button>
-			</div>
-		</div>
-	);
+            {/* {props.cart.map((item) => (
+                <Item key={item.id} {...item} />
+            ))}
+
+            <div className="shopping-cart__checkout">
+                <p>Total: ${getCartTotal()}</p>
+                <button>Checkout</button>
+            </div> */}
+        </div>
+    );
 };
 
 export default ShoppingCart;
