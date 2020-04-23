@@ -19,6 +19,7 @@ const Product = (props) => {
                 onClick={(e) => {
                     e.preventDefault();
                     console.log(props, props.product);
+                    props.addItem(props.product);
                 }}
             >
                 Add to cart
