@@ -18,11 +18,7 @@ const Product = (props) => {
             <button
                 onClick={(e) => {
                     e.preventDefault();
-                    console.log(props.product);
-                    dispatch({
-                        type: 'ADD_TO_CART',
-                        payload: props.product,
-                    });
+                    console.log(props, props.product);
                 }}
             >
                 Add to cart

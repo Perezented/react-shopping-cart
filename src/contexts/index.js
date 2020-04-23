@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-
+// CREATE CONTEXT!!
 export const ProductsContext = createContext();
 console.log({ ProductsContext });
 

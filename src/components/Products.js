@@ -9,11 +9,13 @@ const Products = () => {
         <div className="products-container">
             <ProductsContext.Consumer>
                 {(item) => {
+                    console.log('Item from products.js: ', item);
                     return item.products.map((product) => (
                         <Product
                             key={product.id}
                             product={product}
                             addItem={item.addItem}
+                            cart={item.cart}
                         />
                     ));
                 }}

@@ -7,6 +7,7 @@ const Navigation = () => {
         <div className="navigation">
             <NavigationContext.Consumer>
                 {(item) => {
+                    console.log('In Nav.js: ', item);
                     return (
                         <>
                             <NavLink to="/">Products</NavLink>
