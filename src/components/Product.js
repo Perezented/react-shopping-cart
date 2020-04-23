@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 const Product = (props) => {
-    console.log(props);
+    const dispatch = useDispatch();
+    console.log('these are the props in Product.js:', props);
     return (
         <div className="product">
             <img
@@ -16,7 +18,11 @@ const Product = (props) => {
             <button
                 onClick={(e) => {
                     e.preventDefault();
-                    props.addItem(e.target.value);
+                    console.log(props.product);
+                    dispatch({
+                        type: 'ADD_TO_CART',
+                        payload: props.product,
+                    });
                 }}
             >
                 Add to cart
@@ -26,4 +32,3 @@ const Product = (props) => {
 };
 
 export default Product;
-//props.addItem(props.product)
