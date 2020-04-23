@@ -1,8 +1,6 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 
 const Product = (props) => {
-    const dispatch = useDispatch();
     console.log('these are the props in Product.js:', props);
     return (
         <div className="product">

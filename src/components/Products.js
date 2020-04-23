@@ -15,7 +15,6 @@ const Products = () => {
                             key={product.id}
                             product={product}
                             addItem={item.addItem}
-                            cart={item.cart}
                         />
                     ));
                 }}

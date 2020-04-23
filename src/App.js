@@ -45,7 +45,7 @@ function App() {
 
             {/* Routes */}
             <Route exact path="/">
-                <ProductsContext.Provider value={{ products, addItem, cart }}>
+                <ProductsContext.Provider value={{ products, addItem }}>
                     <Products />
                 </ProductsContext.Provider>
             </Route>

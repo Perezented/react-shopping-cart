@@ -1,19 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 // Components
 import Item from './ShoppingCartItem';
-import { NavigationContext } from '../contexts';
 
-//consume data from the context object rathre than from props
-//context hook pattern
-//-import context obj
-//-call the context hook and pass in the context object
-
-const ShoppingCart = () => {
-    const navItems = useContext(NavigationContext);
-    console.log({ navItems });
+const ShoppingCart = (props) => {
     const getCartTotal = () => {
-        return navItems
+        return props.cart
             .reduce((acc, value) => {
                 return acc + value.price;
             }, 0)
@@ -22,14 +14,14 @@ const ShoppingCart = () => {
 
     return (
         <div className="shopping-cart">
-            {/* {cart.map((item) => (
+            {props.cart.map((item) => (
                 <Item key={item.id} {...item} />
             ))}
 
             <div className="shopping-cart__checkout">
                 <p>Total: ${getCartTotal()}</p>
                 <button>Checkout</button>
-            </div> */}
+            </div>
         </div>
     );
 };
