@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Product = (props) => {
-    console.log('these are the props in Product.js:', props);
+    // console.log('these are the props in Product.js:', props);
     return (
         <div className="product">
             <img
@@ -16,7 +16,7 @@ const Product = (props) => {
             <button
                 onClick={(e) => {
                     e.preventDefault();
-                    console.log(props, props.product);
+                    // console.log(props, props.product);
                     props.addItem(props.product);
                 }}
             >

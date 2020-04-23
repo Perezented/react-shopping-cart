@@ -2,6 +2,7 @@ import React from 'react';
 
 // Components
 import Item from './ShoppingCartItem';
+// Context
 
 const ShoppingCart = (props) => {
     const getCartTotal = () => {
@@ -11,6 +12,8 @@ const ShoppingCart = (props) => {
             }, 0)
             .toFixed(2);
     };
+
+    console.log('these are the props in Shopping cart: ', props);
 
     return (
         <div className="shopping-cart">

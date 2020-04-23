@@ -52,7 +52,9 @@ function App() {
 
             <Route path="/cart">
                 <ShoppingCartContext.Provider value={{ cart, getCartTotal }}>
-                    {cart && <ShoppingCart />}
+                    {cart && (
+                        <ShoppingCart cart={cart} getCartTotal={getCartTotal} />
+                    )}
                 </ShoppingCartContext.Provider>
             </Route>
         </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-
+// Context
 import { ProductsContext } from '../contexts';
 // Components
 import Product from './Product';
