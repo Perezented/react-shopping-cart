@@ -7,28 +7,62 @@ import Navigation from './components/Navigation';
 import Products from './components/Products';
 import ShoppingCart from './components/ShoppingCart';
 
+import { StoreContext, CartContext } from './contexts';
+
 function App() {
-	const [products] = useState(data);
-	const [cart, setCart] = useState([]);
+    const [products] = useState(data);
+    const [cart, setCart] = useState([
+        {
+            id: 1,
+            title: 'The Art Of War',
+            price: 10.11,
+            image:
+                'https://images-na.ssl-images-amazon.com/images/I/41FBMkY3cgL._SX331_BO1,204,203,200_.jpg',
+        },
+        {
+            id: 2,
+            title: 'Civilization and Its Discontents',
+            price: 14.29,
+            image:
+                'https://images-na.ssl-images-amazon.com/images/I/51Jj12iMZnL._SX331_BO1,204,203,200_.jpg',
+        },
+    ]);
 
-	const addItem = item => {
-		// add the given item to the cart
-	};
+    console.log(cart);
+    const addItem = (item) => setCart([...cart, item]);
+    // add the given item to the cart
 
-	return (
-		<div className="App">
-			<Navigation cart={cart} />
+    console.log('this is the cart from App.js', cart);
 
-			{/* Routes */}
-			<Route exact path="/">
-				<Products products={products} addItem={addItem} />
-			</Route>
+    const removeItem = (item) => {
+        // console.log(item);
+        // console.log(cart);
+        setCart([
+            ...cart.filter((v, i, a) => {
+                return v.id !== item.id;
+            }),
+        ]);
+    };
 
-			<Route path="/cart">
-				<ShoppingCart cart={cart} />
-			</Route>
-		</div>
-	);
+    return (
+        <div className="App">
+            <CartContext.Provider value={{ cart }}>
+                <Navigation cart={cart} />
+            </CartContext.Provider>
+
+            <StoreContext.Provider value={{ products, addItem }}>
+                {/* Routes */}
+                <Route exact path="/">
+                    <Products />
+                </Route>
+            </StoreContext.Provider>
+            <CartContext.Provider value={{ cart, removeItem }}>
+                <Route path="/cart">
+                    <ShoppingCart />
+                </Route>
+            </CartContext.Provider>
+        </div>
+    );
 }
 
 export default App;
