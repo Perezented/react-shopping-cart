@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import Product from './Product';
 import { StoreContext } from '../contexts';
 
-const Products = (props) => {
+const Products = () => {
     const { products, addItem } = useContext(StoreContext);
     return (
         <div className="products-container">
