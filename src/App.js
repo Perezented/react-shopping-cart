@@ -29,32 +29,34 @@ function App() {
     ]);
 
     console.log(cart);
-    const addItem = (item) => {
-        // add the given item to the cart
-        setCart([...cart, item]);
-    };
+    const addItem = (item) => setCart([...cart, item]);
+    // add the given item to the cart
+
+    console.log('this is the cart from App.js', cart);
+
     const removeItem = (item) => {
-        console.log(
-            'hhheeeeeyyyy',
-            ...cart.filter((value) => {
-                if (value.id !== item.id) {
-                    console.log('it worked');
-                }
-            })
-        );
+        // console.log(item);
+        // console.log(cart);
+        setCart([
+            ...cart.filter((v, i, a) => {
+                return v.id !== item.id;
+            }),
+        ]);
     };
+
     return (
         <div className="App">
-            <CartContext.Provider value={{ cart, removeItem }}>
+            <CartContext.Provider value={{ cart }}>
                 <Navigation cart={cart} />
+            </CartContext.Provider>
 
-                <StoreContext.Provider value={{ products, addItem }}>
-                    {/* Routes */}
-                    <Route exact path="/">
-                        <Products />
-                    </Route>
-                </StoreContext.Provider>
-
+            <StoreContext.Provider value={{ products, addItem }}>
+                {/* Routes */}
+                <Route exact path="/">
+                    <Products />
+                </Route>
+            </StoreContext.Provider>
+            <CartContext.Provider value={{ cart, removeItem }}>
                 <Route path="/cart">
                     <ShoppingCart />
                 </Route>
